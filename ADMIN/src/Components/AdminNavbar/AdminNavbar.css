@@ -1,4 +1,4 @@
-.navbar{
+.adminnavbar{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8,22 +8,22 @@
     background-color: white;
 }
 
-.nav-logo{
+.adminnav-logo{
     width: 200px;
 
 }
-.nav-profile{
+.adminnav-profile{
     width: 75px;
 
 }
 @media (max-width:800px) {
-    .navbar{
+    .adminnavbar{
         padding: 15px 30px;
     }
-    .nav-logo{
+    .adminnav-logo{
         width: 150px;
     }
-    .nav-profile{
+    .adminnav-profile{
         width: 60px;
     }
 }
