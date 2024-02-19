@@ -11,6 +11,8 @@ const { log } = require('console');
 app.use(express.json());
 app.use(cors());
 
+
+
 // Database Connection withMongoDB
 mongoose.connect("mongodb+srv://irenosedev:ukpokolo@cluster0.pse06dz.mongodb.net/e-commerce")
 
