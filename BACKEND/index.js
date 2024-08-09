@@ -40,7 +40,7 @@ aws.config.update({
     bucket: 'irenoseshopperbucket',
     acl: 'public-read', // Adjust permissions as needed
     key: function (req, file, cb) {
-      cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+      cb(null, `product_${Date.now()}${path.extname(file.originalname)}`);
     }
   });
   
@@ -60,7 +60,7 @@ aws.config.update({
 // Creating Upload Endpoint for images
 
 
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/upload', upload.single('product'), (req, res) => {
     // Handle the uploaded file
     res.json({ message: 'File uploaded successfully' });
   });
