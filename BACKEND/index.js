@@ -4,6 +4,8 @@ const app = express();
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
 const multer = require('multer');
+const aws = require('aws-sdk');
+const multerS3 = require('multer-s3');
 const path = require('path');
 const cors = require('cors');
 const { log } = require('console');
@@ -24,26 +26,54 @@ app.get("/",(req,res)=>{
 
 // Image Storage Engine
 
-const storage = multer.diskStorage({
-    destination: './upload/images',
-    filename: (req,file,cb)=>{
-        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-
+aws.config.update({
+    accessKeyId: 'AKIA5FTZFKR4Z3BBXKW3',
+    secretAccessKey: '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',
+    region: 'YOeu-north-1UR_S3_REGION',
+    
+  });
+  
+  const s3 = new aws.S3();
+  
+  const storage = multerS3({
+    s3: s3,
+    bucket: 'irenoseshopperbucket',
+    acl: 'public-read', // Adjust permissions as needed
+    key: function (req, file, cb) {
+      cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
-})
+  });
+  
+  const upload = multer({ storage: storage });
+  
 
-const upload = multer({storage:storage})
+// const storage = multer.diskStorage({
+//     destination: './upload/images',
+//     filename: (req,file,cb)=>{
+//         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+
+//     }
+// })
+
+// const upload = multer({storage:storage})
 
 // Creating Upload Endpoint for images
 
-app.use('/images',express.static('upload/images'))
 
-app.post("/upload",upload.single('product'),(req,res)=>{
-    res.json({
-        success:1,
-        image_url:`http://localhost:${port}/images/${req.file.filename}`
-    })
-})
+app.post('/upload', upload.single('file'), (req, res) => {
+    // Handle the uploaded file
+    res.json({ message: 'File uploaded successfully' });
+  });
+
+  
+// app.use('/images',express.static('upload/images'))
+
+// app.post("/upload",upload.single('product'),(req,res)=>{
+//     res.json({
+//         success:1,
+//         image_url:`http://localhost:${port}/images/${req.file.filename}`
+//     })
+// })
 
 // Schema for Creating Products
 
