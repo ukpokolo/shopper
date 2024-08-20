@@ -11,9 +11,9 @@ const cors = require('cors');
 const { log } = require('console');
 
 app.use(express.json());
-app.use(cors());
-
-
+app.use(cors({
+    origin: 'https://shopper-front-theta.vercel.app',
+  }));
 
 // Database Connection with MongoDB
 mongoose.connect("mongodb+srv://irenosedev:ukpokolo@cluster0.pse06dz.mongodb.net/e-commerce")
