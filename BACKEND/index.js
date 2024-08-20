@@ -11,9 +11,14 @@ const cors = require('cors');
 const { log } = require('console');
 
 app.use(express.json());
+
+
 app.use(cors({
-    origin: 'https://shopper-front-theta.vercel.app',
-  }));
+    origin: 'https://shopper-front-theta.vercel.app', // Your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true // If you need to allow credentials (cookies, etc.)
+}));
 
 // Database Connection with MongoDB
 mongoose.connect("mongodb+srv://irenosedev:ukpokolo@cluster0.pse06dz.mongodb.net/e-commerce")
