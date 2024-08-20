@@ -30,7 +30,7 @@ app.get("/",(req,res)=>{
 
 aws.config.update({
     accessKeyId: 'AKIA5FTZFKR4Z3BBXKW3',
-    secretAccessKey: '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',
+    secretAccessKey: 'secretAccessKey/Fkcnf7jvCWh2MjbKv5/aYKp',
     region: 'YOeu-north-1UR_S3_REGION',
     
   });
