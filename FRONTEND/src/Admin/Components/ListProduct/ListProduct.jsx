@@ -7,7 +7,7 @@ const ListProduct = () => {
   const [allproducts,setAllProducts] = useState([]);
 
   const fetchInfo = async ()=>{
-    await fetch('https://shopper-front-theta.vercel.app/admin/allproducts')
+    await fetch('https://shopper-alpha.vercel.app/allproducts')
     .then((res)=>res.json())
     .then((data)=>{setAllProducts(data)});
   }

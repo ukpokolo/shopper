@@ -21,7 +21,7 @@ const ShopContextProvider = (props) => {
     const [cartItems,setCartItems] = useState(getDefaultCart());
 
     useEffect(()=>{
-       fetch('https://shopper-front-theta.vercel.app/admin/allproducts')
+       fetch('https://shopper-alpha.vercel.app/allproducts')
        .then((response)=>response.json())
        .then((data)=>setAll_Product(data)) 
 
