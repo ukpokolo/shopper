@@ -14,10 +14,7 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: 'https://shopper-front-theta.vercel.app', // Your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    credentials: true // If you need to allow credentials (cookies, etc.)
+    origin: '*', // Allow all origins for testing purposes
 }));
 
 // Database Connection with MongoDB
