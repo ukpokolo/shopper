@@ -28,36 +28,36 @@ app.get("/",(req,res)=>{
 
 // Image Storage Engine
 
-// aws.config.update({
-//     accessKeyId: 'AKIA5FTZFKR4Z3BBXKW3',
-//     secretAccessKey: 'secretAccessKey/Fkcnf7jvCWh2MjbKv5/aYKp',
-//     region: 'YOeu-north-1UR_S3_REGION',
+aws.config.update({
+    accessKeyId: 'AKIA5FTZFKR4Z3BBXKW3',
+    secretAccessKey: 'secretAccessKey/Fkcnf7jvCWh2MjbKv5/aYKp',
+    region: 'YOeu-north-1UR_S3_REGION',
     
-//   });
+  });
   
-//   const s3 = new aws.S3();
+  const s3 = new aws.S3();
   
-//   const storage = multerS3({
-//     s3: s3,
-//     bucket: 'irenoseshopperbucket',
-//     acl: 'public-read', // Adjust permissions as needed
-//     key: function (req, file, cb) {
-//       cb(null, `product_${Date.now()}${path.extname(file.originalname)}`);
-//     }
-//   });
-  
-//   const upload = multer({ storage: storage });
-  
-
-const storage = multer.diskStorage({
-    destination: './upload/images',
-    filename: (req,file,cb)=>{
-        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-
+  const storage = multerS3({
+    s3: s3,
+    bucket: 'irenoseshopperbucket',
+    acl: 'public-read', // Adjust permissions as needed
+    key: function (req, file, cb) {
+      cb(null, `product_${Date.now()}${path.extname(file.originalname)}`);
     }
-})
+  });
+  
+  const upload = multer({ storage: storage });
+  
 
-const upload = multer({storage:storage})
+// const storage = multer.diskStorage({
+//     destination: './upload/images',
+//     filename: (req,file,cb)=>{
+//         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+
+//     }
+// })
+
+// const upload = multer({storage:storage})
 
 // Creating Upload Endpoint for images
 
