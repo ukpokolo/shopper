@@ -15,7 +15,7 @@ app.use(cors());
 
 
 
-// Database Connection withMongoDB
+// Database Connection with MongoDB
 mongoose.connect("mongodb+srv://irenosedev:ukpokolo@cluster0.pse06dz.mongodb.net/e-commerce")
 
 // API creation
