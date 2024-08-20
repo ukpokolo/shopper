@@ -62,14 +62,25 @@ aws.config.update({
 // Creating Upload Endpoint for images
 
 
-app.post('/upload', upload.single('product'), (req, res) => {
-    res.json({
-        success: true,
-        message: 'File uploaded successfully',
-        image_url: req.file.location // S3 file URL
-    });
-});
+// app.post('/upload', upload.single('product'), (req, res) => {
+//     res.json({
+//         success: true,
+//         message: 'File uploaded successfully',
+//         image_url: req.file.location // S3 file URL
+//     });
+// });
 
+app.post('/upload', upload.single('product'), (req, res) => {
+    try {
+        if (!req.file) {
+            throw new Error('File upload failed');
+        }
+        res.json({ message: 'File uploaded successfully', file: req.file });
+    } catch (error) {
+        console.error("Error in file upload:", error);
+        res.status(500).json({ error: "Internal Server Error: " + error.message });
+    }
+});
 
   
 // app.use('/images',express.static('upload/images'))
