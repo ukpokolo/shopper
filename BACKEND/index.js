@@ -61,9 +61,13 @@ aws.config.update({
 
 
 app.post('/upload', upload.single('product'), (req, res) => {
-    // Handle the uploaded file
-    res.json({ message: 'File uploaded successfully' });
-  });
+    res.json({
+        success: true,
+        message: 'File uploaded successfully',
+        image_url: req.file.location // S3 file URL
+    });
+});
+
 
   
 // app.use('/images',express.static('upload/images'))
