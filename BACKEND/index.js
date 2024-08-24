@@ -29,9 +29,9 @@ app.get("/",(req,res)=>{
 // Image Storage Engine
 
 aws.config.update({
-    accessKeyId: 'AKIA5FTZFKR4Z3BBXKW3',
-    secretAccessKey: 'secretAccessKey/Fkcnf7jvCWh2MjbKv5/aYKp',
-    region: 'YOeu-north-1UR_S3_REGION',
+    accessKeyId: 'AKIA5FTZFKR4S6C7O5H4',
+    secretAccessKey: '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',
+    region: 'eu-north-1',
     
   });
   
@@ -323,3 +323,17 @@ app.listen(port,(error)=>{
         console.log("Error : "+error)
     }
 })
+
+
+
+
+
+
+
+
+// aws.config.update({
+//     accessKeyId: 'AKIA5FTZFKR4Z3BBXKW3',
+//     secretAccessKey: 'Fkcnf7jvCWh2MjbKv5/aYKp',
+//     region: 'YOeu-north-1UR_S3_REGION',
+    
+//   });
