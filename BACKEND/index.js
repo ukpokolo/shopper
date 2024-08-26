@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
 const multer = require('multer');
-const aws = require('aws-sdk');
+const AWS = require('aws-sdk');
 const multerS3 = require('multer-s3');
 const path = require('path');
 const cors = require('cors');
@@ -28,20 +28,24 @@ app.get("/",(req,res)=>{
 
 // Image Storage Engine
 
-aws.config.update({
-    accessKeyId: 'AKIA5FTZFKR4S6C7O5H4',
-    secretAccessKey: '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',
-    region: 'eu-north-1',
-    
-  });
+require('dotenv').config();
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
+});
   
-  const s3 = new aws.S3();
+  const s3 = new AWS.S3();
+
+  console.log("S3 Client Initialized:", s3);
   
   const storage = multerS3({
     s3: s3,
     bucket: 'irenoseshopperbucket',
     acl: 'public-read', // Adjust permissions as needed
     key: function (req, file, cb) {
+        
       cb(null, `product_${Date.now()}${path.extname(file.originalname)}`);
     }
   });
@@ -81,6 +85,7 @@ app.post('/upload', upload.single('product'), (req, res) => {
         res.status(500).json({ error: "Internal Server Error: " + error.message });
     }
 });
+
 
   
 // app.use('/images',express.static('upload/images'))
@@ -128,6 +133,7 @@ const Product = mongoose.model("Product",{
         default:true,
     },
 })
+
 
 app.post('/addproduct',async (req,res)=>{
     let products = await Product.find({});
@@ -323,8 +329,6 @@ app.listen(port,(error)=>{
         console.log("Error : "+error)
     }
 })
-
-
 
 
 

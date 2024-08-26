@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@aws-sdk/lib-storage": "^3.637.0",
+    "aws-sdk": "^2.1682.0"
+  }
+}
