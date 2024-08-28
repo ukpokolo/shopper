@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_OPTIONS='--experimental-specifier-resolution=node --trace-warnings' node index.js",
+    "start": "NODE_OPTIONS=' --trace-warnings' node index.js",
     "dev": "nodemon index.js"
   },
   "author": "",
