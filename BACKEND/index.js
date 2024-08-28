@@ -42,6 +42,10 @@ app.get("/", (req, res) => {
     res.send("Express App is Running");
 });
 
+app.get("/hi", (req, res) => {
+    res.send("Hiiiii")
+})
+
 app.post('/upload', upload.single('product'), (req, res) => {
     try {
         if (!req.file) {
