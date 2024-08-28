@@ -13,7 +13,9 @@ const port = 4000;
 
 
 app.use(cors({
-    origin: '*',
+    origin: 'https://shopper-front-theta.vercel.app', // Allow requests from your frontend
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // IF you need to include cookies or authentication headers
 }));
 
 app.use(express.json());
