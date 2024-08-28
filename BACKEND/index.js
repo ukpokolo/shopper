@@ -11,13 +11,13 @@ const port = 4000;
 // CORS Handling Function
 const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', 'https://shopper-front-theta.vercel.app'); // Replace with your frontend URL
+  res.setHeader('Access-Control-Allow-Origin', 'https://shopper-front-theta.vercel.app'); // Replace with your frontend link
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   );
-  
+
 };
 
 // Database Connection with MongoDB
