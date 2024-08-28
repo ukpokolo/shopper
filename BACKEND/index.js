@@ -9,16 +9,11 @@ const path = require('path');
 const app = express();
 const port = 4000;
 
-
-
+app.use(express.json());
 
 app.use(cors({
-    origin: 'https://shopper-front-theta.vercel.app', // Allow requests from your frontend
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // IF you need to include cookies or authentication headers
+    origin: '*', // Allow all origins for testing purposes
 }));
-
-app.use(express.json());
 
 // Database Connection with MongoDB
 mongoose.connect("mongodb+srv://irenosedev:ukpokolo@cluster0.pse06dz.mongodb.net/e-commerce");
@@ -240,5 +235,3 @@ app.listen(port, (error) => {
         console.log("Error: " + error);
     }
 });
-
-
